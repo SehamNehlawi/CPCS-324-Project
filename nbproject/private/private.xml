@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/s/Documents/NetBeansProjects/CPCS_324_Project/src/cpcs_324_project/CPCS_324_Project.java</file>
+            <file>file:/C:/Users/s/Documents/NetBeansProjects/CPCS_324_Project/src/GraphFramework/Vertex.java</file>
+            <file>file:/C:/Users/s/Documents/NetBeansProjects/CPCS_324_Project/src/GraphFramework/Edge.java</file>
+            <file>file:/C:/Users/s/Documents/NetBeansProjects/CPCS_324_Project/src/GraphFramework/Graph.java</file>
         </group>
     </open-files>
 </project-private>

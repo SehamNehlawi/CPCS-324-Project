@@ -8,6 +8,42 @@ CPCS324 Group Project | Phase1 | Section B9B
 
 package GraphFramework;
 
+import java.util.LinkedList;
+
 public class Vertex {
-    
+    private int label;
+    private boolean isVisited;
+    private LinkedList<Edge> adjList;
+
+    public Vertex(int label) {
+        this.label = label;
+        this.isVisited = false;
+        this.adjList = new LinkedList<Edge>();
+    }
+
+    public int getLabel() {
+        return label;
+    }
+
+    public boolean isVisited() {
+        return isVisited;
+    }
+
+    public void setVisited(boolean isVisited) {
+        this.isVisited = isVisited;
+    }
+
+    public LinkedList<Edge> getAdjList() {
+        return adjList;
+    }
+
+    public void addEdge(Edge edge) {
+        adjList.add(edge);
+    }
+
+    public void displayInfo() {
+        System.out.println("Label: " + label+" Visited: " + isVisited +" Adjacency List: " + adjList);
+    }
 }
+
+

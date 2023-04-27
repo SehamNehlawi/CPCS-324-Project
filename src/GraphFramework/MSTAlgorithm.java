@@ -8,6 +8,11 @@ CPCS324 Group Project | Phase1 | Section B9B
 
 package GraphFramework;
 
-public class MSTAlgorithm {
+import java.util.ArrayList;
+
+public abstract class MSTAlgorithm {
+    protected ArrayList<Edge> MSTResultList=new ArrayList<>();
     
+    // Abstract method to display resulting MST
+    public abstract void displayResultingMST();
 }
