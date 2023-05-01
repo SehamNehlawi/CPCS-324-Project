@@ -9,5 +9,8 @@ CPCS324 Group Project | Phase1 | Section B9B
 package GraphFramework;
 
 public class Graph {
-    
+    int verticesNO;
+    int edgeNO;
+    Boolean isDigraph;
+    Vertex [] vertices; 
 }

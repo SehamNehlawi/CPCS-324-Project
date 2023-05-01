@@ -11,7 +11,13 @@ package GraphFramework;
 import java.util.ArrayList;
 
 public abstract class MSTAlgorithm {
-    protected ArrayList<Edge> MSTResultList=new ArrayList<>();
+    Graph graph;
+    protected ArrayList<Edge> MSTResultList;
+    
+    MSTAlgorithm(Graph graph){
+        this.graph = graph;
+        this.MSTResultList = new ArrayList<>(graph.verticesNO);
+    }
     
     // Abstract method to display resulting MST
     public abstract void displayResultingMST();
