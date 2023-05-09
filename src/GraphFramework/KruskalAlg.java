@@ -23,8 +23,8 @@ public class KruskalAlg extends MSTAlgorithm{
         
         // Sort edges
         ArrayList<Edge> edges = new ArrayList<>();
-        for(int i=0; i < graph.verticesNO; i++){
-            edges.addAll(graph.vertices[i].getAdjList());
+        for(int i=0; i < graph.getVerticesNO(); i++){
+            edges.addAll(graph.getVertices()[i].getAdjList());
         }
         Collections.sort(edges, (edge1, edge2) -> edge1.getWeight() - edge2.getWeight());
         
@@ -32,9 +32,9 @@ public class KruskalAlg extends MSTAlgorithm{
         int cost = 0, ecounter = 0;
         
         // Kruskal algorithm
-        Vertex[] vertexList = new Vertex[graph.verticesNO];
+        Vertex[] vertexList = new Vertex[graph.getVerticesNO()];
         makeSet(vertexList);
-        while(ecounter < graph.verticesNO-1) {
+        while(ecounter < graph.getVerticesNO()-1) {
             Edge edge = edges.remove(edges.size()-1);
             
             // Check if the endpoints belong to different sets
