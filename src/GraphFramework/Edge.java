@@ -37,6 +37,7 @@ public class Edge {
     }
 
     public void displayInfo() {
-         System.out.println(" Office No."   + source.getLabel()+" – Office No. "+target.getLabel()+" : line length: "+weight);
+        System.out.println(" Office No."   + source.getLabel()+" – Office No. "+target.getLabel()+" : line length: "+weight);
+        System.out.println(" Office No." + source.getLabel() + " – Office No. " + target.getLabel() + " : line length: " + weight);
     }
 }

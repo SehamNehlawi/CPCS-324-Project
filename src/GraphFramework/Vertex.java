@@ -24,6 +24,10 @@ public class Vertex {
     public int getLabel() {
         return label;
     }
+    
+    public void setLabel(int label) {
+        this.label = label;
+    }
 
     public boolean isVisited() {
         return isVisited;
