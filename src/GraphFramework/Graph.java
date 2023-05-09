@@ -9,8 +9,43 @@ CPCS324 Group Project | Phase1 | Section B9B
 package GraphFramework;
 
 public class Graph {
-    int verticesNO;
-    int edgeNO;
-    Boolean isDigraph;
-    Vertex [] vertices; 
+    private int verticesNO;
+    private int edgeNO;
+    private Boolean isDigraph;
+    private Vertex [] vertices; 
+    
+    
+    // Getters & Setters
+    public int getVerticesNO() {
+        return verticesNO;
+    }
+
+    public void setVerticesNO(int verticesNO) {
+        this.verticesNO = verticesNO;
+    }
+
+    public int getEdgeNO() {
+        return edgeNO;
+    }
+
+    public void setEdgeNO(int edgeNO) {
+        this.edgeNO = edgeNO;
+    }
+
+    public Boolean getIsDigraph() {
+        return isDigraph;
+    }
+
+    public void setIsDigraph(Boolean isDigraph) {
+        this.isDigraph = isDigraph;
+    }
+
+    public Vertex[] getVertices() {
+        return vertices;
+    }
+
+    public void setVertices(Vertex[] vertices) {
+        this.vertices = vertices;
+    }
+    
 }
