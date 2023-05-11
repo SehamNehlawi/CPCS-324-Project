@@ -38,7 +38,10 @@ public class KruskalAlg extends MSTAlgorithm{
             Edge edge = edges.remove(edges.size()-1);
             
             // Check if the endpoints belong to different sets
-            if(vertexList[edge.getSource().getLabel()].getLabel() != vertexList[edge.getTarget().getLabel()].getLabel()){
+            Integer sourceLabel = Integer.valueOf(edge.getSource().getLabel());
+            Integer targetLabel = Integer.valueOf(edge.getTarget().getLabel());
+            
+            if(vertexList[sourceLabel].getLabel() != vertexList[targetLabel].getLabel()){
                 // Add the edge to MST and update the labels of the vertices
                 MSTResultList.add(ecounter, edge);
                 union(vertexList, edge.getSource(), edge.getTarget());
@@ -59,7 +62,7 @@ public class KruskalAlg extends MSTAlgorithm{
     private static void makeSet(Vertex[] list){
         // Initialize the vertex list with labels from 0 to n-1
         for(int i=0; i < list.length; i++) {
-    		Vertex ver = new Vertex(i);
+    		Vertex ver = new Vertex(Integer.toString(i));
     		list[i] = ver;
     	}
     }
@@ -68,12 +71,15 @@ public class KruskalAlg extends MSTAlgorithm{
     // Union Function
     private static void union(Vertex[] vertexList, Vertex vSource, Vertex vTarget){
 
-        int labelSource = vertexList[vSource.getLabel()].getLabel();
-        int labelTarget = vertexList[vTarget.getLabel()].getLabel();
+        Integer sourceLabel = Integer.valueOf(vSource.getLabel());
+        Integer targetLabel = Integer.valueOf(vTarget.getLabel());
+        
+        int labelSource = Integer.parseInt(vertexList[sourceLabel].getLabel());
+        int labelTarget = Integer.parseInt(vertexList[targetLabel].getLabel());
         // Update the labels of the vertices to merge two disjoint sets
         for(int i=0; i < vertexList.length; i++) {
-            if(vertexList[i].getLabel() == labelSource){
-                vertexList[i].setLabel(labelTarget);
+            if(Integer.parseInt(vertexList[i].getLabel()) == labelSource){
+                vertexList[i].setLabel(""+labelTarget);
             }
         }
     }

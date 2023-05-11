@@ -19,6 +19,12 @@ public class Edge {
         this.parent = parent;
         this.weight = weight;
     }
+    
+    public Edge(Vertex source, Vertex target, int weight) {
+        this.source = source;
+        this.target = target;
+        this.weight = weight;
+    }
 
     public Vertex getSource() {
         return source;
