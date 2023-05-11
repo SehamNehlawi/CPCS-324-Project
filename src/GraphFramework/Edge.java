@@ -8,11 +8,14 @@ CPCS324 Group Project | Phase1 | Section B9B
 
 package GraphFramework;
 public class Edge {
+    
+    // ATRIBUTES 
     Vertex source;
     Vertex target;
     Vertex parent;
     int weight;
 
+    // CONSTRUCTOR
     public Edge(Vertex source, Vertex target, Vertex parent, int weight) {
         this.source = source;
         this.target = target;
@@ -26,6 +29,7 @@ public class Edge {
         this.weight = weight;
     }
 
+    // METHODS
     public void displayInfo() {
         System.out.println(" Office No."   + source.label+" – Office No. "+target.label+" : line length: "+weight);
     }

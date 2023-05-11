@@ -11,20 +11,20 @@ package GraphFramework;
 import java.util.LinkedList;
 
 public class Vertex {
+    
+    // ATRIBUTES 
     String label;
     boolean isVisited;
     LinkedList<Edge> adjList;
 
+    // CONSTRUCTOR
     public Vertex(String label) {
         this.label = label;
         this.isVisited = false;
         this.adjList = new LinkedList<Edge>();
     }
 
-    public void addEdge(Edge edge) {
-        adjList.add(edge);
-    }
-
+    // METHODS
     public void displayInfo() {
         System.out.println("Label: " + label+" Visited: " + isVisited +" Adjacency List: " + adjList);
     }

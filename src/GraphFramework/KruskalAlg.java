@@ -13,10 +13,12 @@ import java.util.Collections;
 
 public class KruskalAlg extends MSTAlgorithm{
     
+    // CONSTRUCTOR
     public KruskalAlg(Graph graph){
         super(graph);
     }
     
+    // METHODS
     @Override
     public void displayResultingMST(){
         

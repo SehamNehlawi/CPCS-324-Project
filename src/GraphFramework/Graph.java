@@ -12,6 +12,7 @@ import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+
 public class Graph {
     
     // Attributes
@@ -25,28 +26,58 @@ public class Graph {
     
     // Functions
     void makeGraph(int vNum, int eNum){
-        this.verticesNo=vNum;
-        this.eddgNo=eNum;
+        //this.verticesNo=vNum;
+        //this.eddgNo=eNum;
         this.vertices = new Vertex[vNum];
         for (int i = 0; i < vNum; i++) {
            // create vertix and add it to the list
+           this.verticesNo++;
            vertices[i]=creatVertex(String.valueOf('A'+i));
         }
         
+         int choose[]=new int[vNum];
+         for (int j = 0; j < vNum; j++)  choose[j]=0;
+          
         for (int i = 0; i < eNum; i++) {
             // choose random weight
-           int w = (int)(Math.random()*100);
+            int w = 1+(int)(Math.random()*100); 
            
-           int v1,v2;
-           if(i<vNum-1){
-             v1=i; v2=i+1;  
+            int v1,v2;
+            if(i<vNum-1){
+           
+            // choose vertex 1
+            do {
+                v1=(int)(Math.random()*vNum);
+            } while (choose[v1]==2);
+            choose[v1]++;
+            
+            // choose vertex 2
+            do {
+                v2=(int)(Math.random()*vNum);
+            } while (choose[v1]==2);
+            choose[v2]++;
+          
+            // the graph now is connected 
            }
            else{
             v1 = (int)(Math.random()*(vNum));
-            v2 = (int)(Math.random()*(vNum));
+            
+             boolean t =false;
+            do {
+                v2 = (int)(Math.random()*(vNum));
+                if(v2==v1)continue;
+                for (int j = 0; j<vertices[v1].adjList.size();j++ ){
+                  if(vertices[v1].adjList.get(j).target.label.charAt(0)==(vertices[v2].label.charAt(0))){
+                      t=true;
+                      break;
+                  }
+                }
+            } while (t);
+                
            }
            
            // add the edge
+           this.eddgNo+=2;
            addEdge(vertices[v1],vertices[v2],w);
            addEdge(vertices[v2],vertices[v1],w);
         }
@@ -62,10 +93,10 @@ public class Graph {
         
        // read number of vertices
        int v = input.nextInt();
-       this.verticesNo=v;
+       //this.verticesNo=v;
        // read number of edges
        int e = input.nextInt();
-       this.eddgNo=(!isDigraph?2*e:e);
+      // this.eddgNo=(!isDigraph?2*e:e);
        
        this.vertices = new Vertex[v];
         
@@ -75,12 +106,13 @@ public class Graph {
             int w = input.nextInt();
             
             // add vertices
-            vertices[(s1.charAt(0))-'A'] = creatVertex(s1);
-            vertices[(s2.charAt(0))-'A'] = creatVertex(s2);
+            if(vertices[(s1.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s1.charAt(0))-'A']= creatVertex(s1);}
+            if(vertices[(s2.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s2.charAt(0))-'A']= creatVertex(s2);}
            
-            // add the edge 
+            // add the edge
+            this.eddgNo++;
             addEdge( vertices[(s1.charAt(0))-'A'] , vertices[(s2.charAt(0))-'A'] ,w);
-            if(!isDigraph)  addEdge( vertices[(s2.charAt(0))-'A'] , vertices[(s1.charAt(0))-'A'] ,w);
+            if(!isDigraph){ this.eddgNo++;  addEdge( vertices[(s2.charAt(0))-'A'] , vertices[(s1.charAt(0))-'A'] ,w);}
         }
     }
    
@@ -98,5 +130,6 @@ public class Graph {
     Vertex creatVertex(String label){
         return new Vertex(label);
     }
+    
     
 }
