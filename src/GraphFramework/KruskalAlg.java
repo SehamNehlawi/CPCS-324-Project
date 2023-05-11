@@ -41,7 +41,7 @@ public class KruskalAlg extends MSTAlgorithm{
             
             // Check if the endpoints belong to different sets
             Integer sourceLabel = Integer.valueOf(edge.source.label);
-            Integer targetLabel = Integer.valueOf(edge.source.label);
+            Integer targetLabel = Integer.valueOf(edge.target.label);
             
             if(vertexList[sourceLabel].label != vertexList[targetLabel].label){
                 // Add the edge to MST and update the labels of the vertices

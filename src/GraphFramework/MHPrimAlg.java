@@ -58,7 +58,7 @@ public class MHPrimAlg extends MSTAlgorithm{
             // Add the new edge to set of result edges 
             if(minEdge != null){
                 minEdge.target.isVisited = true;
-                MSTResultList.set(i, minEdge);
+                MSTResultList.add(minEdge);
                 cost += minEdge.weight;
             } 
             

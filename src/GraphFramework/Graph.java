@@ -19,9 +19,7 @@ public class Graph {
     int verticesNo=0;
     int eddgNo =0;
     boolean isDigraph=false;
-    
     Vertex vertices[];
-    
     
     
     // Functions
@@ -54,21 +52,28 @@ public class Graph {
             // choose vertex 2
             do {
                 v2=(int)(Math.random()*vNum);
-            } while (choose[v1]==2);
+            } while (choose[v2]==2);
             choose[v2]++;
           
             // the graph now is connected 
            }
            else{
+            //v1 = (int)(Math.random()*(vNum));
             v1 = (int)(Math.random()*(vNum));
-            
-             boolean t =false;
+            v2 = (int)(Math.random()*(vNum));
+
+            boolean t;
             do {
+                t = true;
+                v1 = (int)(Math.random()*(vNum));
                 v2 = (int)(Math.random()*(vNum));
-                if(v2==v1)continue;
+                if(v2!=v1){
+                    t = false;
+                    continue;
+                }
                 for (int j = 0; j<vertices[v1].adjList.size();j++ ){
-                  if(vertices[v1].adjList.get(j).target.label.charAt(0)==(vertices[v2].label.charAt(0))){
-                      t=true;
+                  if(vertices[v1].adjList.get(j).target.label.charAt(0)!=(vertices[v2].label.charAt(0))){
+                      t=false;
                       break;
                   }
                 }
