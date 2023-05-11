@@ -21,7 +21,7 @@ public class MHPrimAlg extends MSTAlgorithm{
         
         //-------------------------- Generate MST ------------------------------    
         // Initialize set of visitid vertices with a single vertex
-        graph.getVertices()[0].setVisited(true);
+        graph.vertices[0].isVisited = true;
         
         // Needed variables
         int min, cost = 0;
@@ -29,27 +29,27 @@ public class MHPrimAlg extends MSTAlgorithm{
         Edge currentEdge, minEdge;
         
         // Generate MST
-        for(int i=0; i<graph.getVerticesNO()-1; i++){ // Iterates |V|-1 times
+        for(int i=0; i<graph.verticesNo-1; i++){ // Iterates |V|-1 times
         
             minEdge = null;
             min = Integer.MAX_VALUE;
         
             // Iterates through all vertices
-            for(int j=0; j<graph.getVerticesNO(); j++){ 
+            for(int j=0; j<graph.verticesNo; j++){ 
         
                 // Make sure the vertex belongs to list of visited vertices 
-                vertex = graph.getVertices()[j];
-                if(vertex.isVisited()){
+                vertex = graph.vertices[j];
+                if(vertex.isVisited){
         
                     // Search in all adjVertices
-                    for(int k=0; k<vertex.getAdjList().size(); k++){
+                    for(int k=0; k<vertex.adjList.size(); k++){
                         
-                        currentEdge = vertex.getAdjList().get(k);
-                        if(!currentEdge.getTarget().isVisited() 
-                            && currentEdge.getWeight()<min){
+                        currentEdge = vertex.adjList.get(k);
+                        if(!currentEdge.target.isVisited 
+                            && currentEdge.weight<min){
                             // Choose the minimum cost edge of all of them
                             minEdge = currentEdge;
-                            min = minEdge.getWeight();
+                            min = minEdge.weight;
                         }  
                     } // End loop
                 }  
@@ -57,9 +57,9 @@ public class MHPrimAlg extends MSTAlgorithm{
         
             // Add the new edge to set of result edges 
             if(minEdge != null){
-                minEdge.getTarget().setVisited(true);
+                minEdge.target.isVisited = true;
                 MSTResultList.set(i, minEdge);
-                cost += minEdge.getWeight();
+                cost += minEdge.weight;
             } 
             
         } // End loop

@@ -23,29 +23,29 @@ public class KruskalAlg extends MSTAlgorithm{
         
         // Sort edges
         ArrayList<Edge> edges = new ArrayList<>();
-        for(int i=0; i < graph.getVerticesNO(); i++){
-            edges.addAll(graph.getVertices()[i].getAdjList());
+        for(int i=0; i < graph.verticesNo; i++){
+            edges.addAll(graph.vertices[i].adjList);
         }
-        Collections.sort(edges, (edge1, edge2) -> edge1.getWeight() - edge2.getWeight());
+        Collections.sort(edges, (edge1, edge2) -> edge1.weight - edge2.weight);
         
         
         int cost = 0, ecounter = 0;
         
         // Kruskal algorithm
-        Vertex[] vertexList = new Vertex[graph.getVerticesNO()];
+        Vertex[] vertexList = new Vertex[graph.verticesNo];
         makeSet(vertexList);
-        while(ecounter < graph.getVerticesNO()-1) {
+        while(ecounter < graph.verticesNo-1) {
             Edge edge = edges.remove(edges.size()-1);
             
             // Check if the endpoints belong to different sets
-            Integer sourceLabel = Integer.valueOf(edge.getSource().getLabel());
-            Integer targetLabel = Integer.valueOf(edge.getTarget().getLabel());
+            Integer sourceLabel = Integer.valueOf(edge.source.label);
+            Integer targetLabel = Integer.valueOf(edge.source.label);
             
-            if(vertexList[sourceLabel].getLabel() != vertexList[targetLabel].getLabel()){
+            if(vertexList[sourceLabel].label != vertexList[targetLabel].label){
                 // Add the edge to MST and update the labels of the vertices
                 MSTResultList.add(ecounter, edge);
-                union(vertexList, edge.getSource(), edge.getTarget());
-                cost += MSTResultList.get(ecounter).getWeight();
+                union(vertexList, edge.source, edge.source);
+                cost += MSTResultList.get(ecounter).weight;
                 ecounter++;
             }
         }
@@ -71,15 +71,15 @@ public class KruskalAlg extends MSTAlgorithm{
     // Union Function
     private static void union(Vertex[] vertexList, Vertex vSource, Vertex vTarget){
 
-        Integer sourceLabel = Integer.valueOf(vSource.getLabel());
-        Integer targetLabel = Integer.valueOf(vTarget.getLabel());
+        Integer sourceLabel = Integer.valueOf(vSource.label);
+        Integer targetLabel = Integer.valueOf(vTarget.label);
         
-        int labelSource = Integer.parseInt(vertexList[sourceLabel].getLabel());
-        int labelTarget = Integer.parseInt(vertexList[targetLabel].getLabel());
+        int labelSource = Integer.parseInt(vertexList[sourceLabel].label);
+        int labelTarget = Integer.parseInt(vertexList[targetLabel].label);
         // Update the labels of the vertices to merge two disjoint sets
         for(int i=0; i < vertexList.length; i++) {
-            if(Integer.parseInt(vertexList[i].getLabel()) == labelSource){
-                vertexList[i].setLabel(""+labelTarget);
+            if(Integer.parseInt(vertexList[i].label) == labelSource){
+                vertexList[i].label = ""+labelTarget;
             }
         }
     }

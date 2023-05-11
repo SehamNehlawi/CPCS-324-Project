@@ -11,34 +11,14 @@ package GraphFramework;
 import java.util.LinkedList;
 
 public class Vertex {
-    private String label;
-    private boolean isVisited;
+    String label;
+    boolean isVisited;
     LinkedList<Edge> adjList;
 
     public Vertex(String label) {
         this.label = label;
         this.isVisited = false;
         this.adjList = new LinkedList<Edge>();
-    }
-
-    public String getLabel() {
-        return label;
-    }
-    
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    public boolean isVisited() {
-        return isVisited;
-    }
-
-    public void setVisited(boolean isVisited) {
-        this.isVisited = isVisited;
-    }
-
-    public LinkedList<Edge> getAdjList() {
-        return adjList;
     }
 
     public void addEdge(Edge edge) {

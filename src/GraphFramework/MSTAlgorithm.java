@@ -16,7 +16,7 @@ public abstract class MSTAlgorithm {
     
     MSTAlgorithm(Graph graph){
         this.graph = graph;
-        this.MSTResultList = new ArrayList<>(graph.getVerticesNO()-1);
+        this.MSTResultList = new ArrayList<>(graph.verticesNo-1);
     }
     
     // Abstract method to display resulting MST

@@ -8,10 +8,10 @@ CPCS324 Group Project | Phase1 | Section B9B
 
 package GraphFramework;
 public class Edge {
-    private Vertex source;
-    private Vertex target;
-    private Vertex parent;
-    private int weight;
+    Vertex source;
+    Vertex target;
+    Vertex parent;
+    int weight;
 
     public Edge(Vertex source, Vertex target, Vertex parent, int weight) {
         this.source = source;
@@ -26,23 +26,7 @@ public class Edge {
         this.weight = weight;
     }
 
-    public Vertex getSource() {
-        return source;
-    }
-
-    public Vertex getTarget() {
-        return target;
-    }
-
-    public Vertex getParent() {
-        return parent;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
     public void displayInfo() {
-        System.out.println(" Office No."   + source.getLabel()+" – Office No. "+target.getLabel()+" : line length: "+weight);
+        System.out.println(" Office No."   + source.label+" – Office No. "+target.label+" : line length: "+weight);
     }
 }

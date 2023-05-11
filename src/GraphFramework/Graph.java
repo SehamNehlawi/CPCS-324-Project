@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class Graph {
     
     // Attributes
-    private int verticesNo=0;
-    private int eddgNo =0;
-    private boolean isDigraph=false;
+    int verticesNo=0;
+    int eddgNo =0;
+    boolean isDigraph=false;
     
     Vertex vertices[];
     
@@ -97,40 +97,6 @@ public class Graph {
     
     Vertex creatVertex(String label){
         return new Vertex(label);
-    }
-    
-    // Getters & Setters
-
-    public int getVerticesNO() {
-        return verticesNo;
-    }
-
-    public void setVerticesNo(int verticesNo) {
-        this.verticesNo = verticesNo;
-    }
-
-    public int getEddgNo() {
-        return eddgNo;
-    }
-
-    public void setEddgNo(int eddgNo) {
-        this.eddgNo = eddgNo;
-    }
-
-    public boolean isIsDigraph() {
-        return isDigraph;
-    }
-
-    public void setIsDigraph(boolean isDigraph) {
-        this.isDigraph = isDigraph;
-    }
-
-    public Vertex[] getVertices() {
-        return vertices;
-    }
-
-    public void setVertices(Vertex[] vertices) {
-        this.vertices = vertices;
     }
     
 }
