@@ -10,6 +10,9 @@ package GraphFramework;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+
+
 
 public class KruskalAlg extends MSTAlgorithm{
     
@@ -22,34 +25,33 @@ public class KruskalAlg extends MSTAlgorithm{
     @Override
     public void displayResultingMST(){
         
-        
         // Sort edges
         ArrayList<Edge> edges = new ArrayList<>();
         for(int i=0; i < graph.verticesNo; i++){
             edges.addAll(graph.vertices[i].adjList);
         }
         Collections.sort(edges, (edge1, edge2) -> edge1.weight - edge2.weight);
-        
-        
+
+        // Initialize variables
         int cost = 0, ecounter = 0;
-        
-        // Kruskal algorithm
-        Vertex[] vertexList = new Vertex[graph.verticesNo];
-        makeSet(vertexList);
-        while(ecounter < graph.verticesNo-1) {
-            Edge edge = edges.remove(edges.size()-1);
+        ArrayList<HashSet<Vertex>> vertexlist = new ArrayList<>();
+        makeSet(vertexlist, graph);
+
+        // Iterate through edges
+        int i = 0;
+        while(ecounter < graph.verticesNo-1)  {
+            Edge edge = edges.get(i);
+            int source = find(vertexlist, edge.source);
+            int target = find(vertexlist, edge.target);
             
-            // Check if the endpoints belong to different sets
-            Integer sourceLabel = Integer.valueOf(edge.source.label);
-            Integer targetLabel = Integer.valueOf(edge.target.label);
-            
-            if(vertexList[sourceLabel].label != vertexList[targetLabel].label){
-                // Add the edge to MST and update the labels of the vertices
-                MSTResultList.add(ecounter, edge);
-                union(vertexList, edge.source, edge.source);
-                cost += MSTResultList.get(ecounter).weight;
+            // Check if vertices belong to different subsets
+            if(source != target){
+                MSTResultList.add(ecounter,edge); // Add edge to MST
+                union(vertexlist, source, target); // Merge subsets
+                cost += MSTResultList.get(ecounter).weight; // Update cost of MST
                 ecounter++;
             }
+            i++;
         }
         
         // Display the MST and its total cost
@@ -59,30 +61,38 @@ public class KruskalAlg extends MSTAlgorithm{
         }
         System.out.println("The cost of designed phone network: " + cost);
     }
-    
-    // Make set function
-    private static void makeSet(Vertex[] list){
-        // Initialize the vertex list with labels from 0 to n-1
-        for(int i=0; i < list.length; i++) {
-    		Vertex ver = new Vertex(Integer.toString(i));
-    		list[i] = ver;
-    	}
-    }
-    
-    
-    // Union Function
-    private static void union(Vertex[] vertexList, Vertex vSource, Vertex vTarget){
 
-        Integer sourceLabel = Integer.valueOf(vSource.label);
-        Integer targetLabel = Integer.valueOf(vTarget.label);
-        
-        int labelSource = Integer.parseInt(vertexList[sourceLabel].label);
-        int labelTarget = Integer.parseInt(vertexList[targetLabel].label);
-        // Update the labels of the vertices to merge two disjoint sets
-        for(int i=0; i < vertexList.length; i++) {
-            if(Integer.parseInt(vertexList[i].label) == labelSource){
-                vertexList[i].label = ""+labelTarget;
+    // Make Set function
+    private static void makeSet(ArrayList<HashSet<Vertex>> vertexlist, Graph graph){
+        for(int i = 0; i < graph.verticesNo; i++){
+            HashSet<Vertex> list = new HashSet<>();
+            list.add(graph.vertices[i]);
+            vertexlist.add(list);
+    	}   
+    }
+
+    // Find Function
+    private static int find(ArrayList<HashSet<Vertex>> vertexlist, Vertex vertex){
+        int num = -1;
+        for (int i = 0; i < vertexlist.size(); i++) {
+            HashSet<Vertex> verlist = vertexlist.get(i);
+            for (Vertex ver : verlist) {
+                if (ver.label.equals(vertex.label)) { // Check if vertex exists in subset
+                    num = i;
+                    return num;
+                }
             }
         }
+        return num;
+    }
+    
+    // Union Function
+    private static void union(ArrayList<HashSet<Vertex>> vertexlist, int sublist1, int sublist2){
+        HashSet<Vertex> list1 = vertexlist.get(sublist1);
+        HashSet<Vertex> list2 = vertexlist.get(sublist2);
+        for (Vertex sub2 : list2) {
+            list1.add(sub2); // Merge subsets
+        }
+        vertexlist.remove(sublist2); // Remove merged subset
     }
 }

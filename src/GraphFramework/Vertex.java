@@ -22,6 +22,7 @@ public class Vertex {
         this.label = label;
         this.isVisited = false;
         this.adjList = new LinkedList<Edge>();
+        Vertex parent;
     }
 
     // METHODS
