@@ -10,10 +10,10 @@ package GraphFramework;
 public class Edge {
     
     // ATRIBUTES 
-    Vertex source;
-    Vertex target;
-    Vertex parent;
-    int weight;
+    public Vertex source;
+    public Vertex target;
+    public Vertex parent;
+    public int weight;
 
     // CONSTRUCTOR
     public Edge(Vertex source, Vertex target, Vertex parent, int weight) {
