@@ -11,18 +11,6 @@ package PhoneNetworkApp;
 import GraphFramework.Vertex;
 
 public class Line extends GraphFramework.Edge {
-<<<<<<< HEAD
-=======
-    int Length= super.weight*5;
-    public Line(Vertex source, Vertex target, int weight){
-        super(source, target, weight);
-    }
-    @Override
-    public void displayInfo() {
-        System.out.println(" Office No."   + source.label+" – Office No. "+target.label+" : line length: "+Length);
-    }
->>>>>>> 205d37a85a6638370ee0b02f88569046472449dc
-    
     // ATRIBUTES
     int Length;
     

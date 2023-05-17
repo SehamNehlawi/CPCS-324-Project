@@ -48,7 +48,7 @@ public class PhoneNWDesignApp {
         kruskal.displayResultingMST();
         System.out.println("------------------------------------------------\nTotal time elapsed (Kruskal Algorithm) : " + elapsedTime);
         
-        System.out.println("\n\n");
+        System.out.println("\n");
         
         // Disply MST (Minimum Spanning Tree) By Prim Algorithm and caluclate elapsed time
         long beginTime = System.nanoTime();
