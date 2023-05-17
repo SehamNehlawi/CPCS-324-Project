@@ -26,6 +26,8 @@ public class BluePrintsGraph extends GraphFramework.Graph {
 
     @Override
     public Vertex createVertex(String label){
-        return new Office(label);
+         Office  O = new Office(label);
+         O.setLable(label);
+         return O;
     } 
 }

@@ -25,10 +25,12 @@ public abstract class Graph {
     // METHODS
     public void makeGraph(int vNum, int eNum){
         this.vertices = new Vertex[vNum];
+       // char label = 'A';
         for (int i = 0; i < vNum; i++) {
            // create vertix and add it to the list
            this.verticesNo++;
-           vertices[i]=createVertex(String.valueOf('A'+i));
+           vertices[i]=createVertex(Integer.toString(i+1));
+          // label++;
         }
         
          int choose[]=new int[vNum];
@@ -69,7 +71,7 @@ public abstract class Graph {
                     continue;
                 }
                 for (int j = 0; j<vertices[v1].adjList.size();j++ ){
-                  if(vertices[v1].adjList.get(j).target.label.charAt(0)!=(vertices[v2].label.charAt(0))){
+                  if(vertices[v1].adjList.get(j).target.label!=(vertices[v2].label)){
                       t=false;
                       break;
                   }
@@ -105,8 +107,8 @@ public abstract class Graph {
             int w = input.nextInt();
             
             // add vertices
-            if(vertices[(s1.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s1.charAt(0))-'A']= createVertex(s1);}
-            if(vertices[(s2.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s2.charAt(0))-'A']= createVertex(s2);}
+            if(vertices[(s1.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s1.charAt(0))-'A']= createVertex(String.valueOf((s1.charAt(0))-'A'));}
+            if(vertices[(s2.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s2.charAt(0))-'A']= createVertex(String.valueOf((s2.charAt(0))-'A'));}
            
             // add the edge
             this.eddgNo++;
