@@ -8,6 +8,22 @@ CPCS324 Group Project | Phase1 | Section B9B
 
 package PhoneNetworkApp;
 
-public class Line {
+import GraphFramework.Vertex;
+
+public class Line extends GraphFramework.Edge {
     
+    // ATRIBUTES
+    int Length;
+    
+    // CONSTRUCTOR
+    public Line(Vertex source, Vertex target, int weight){
+        super(source, target, weight);
+        this.Length = super.weight * 5;
+    }
+    
+    // METHODS
+    @Override
+    public void displayInfo() {
+        System.out.println(" Office No." + source.label + " – Office No. " + target.label + " : line length: " + Length);
+    } 
 }

@@ -13,7 +13,7 @@ import java.util.LinkedList;
 public class Vertex {
     
     // ATRIBUTES 
-    String label;
+    public String label;
     boolean isVisited;
     LinkedList<Edge> adjList;
 

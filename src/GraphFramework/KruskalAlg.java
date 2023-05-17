@@ -14,7 +14,7 @@ import java.util.HashSet;
 
 
 
-public class KruskalAlg extends MSTAlgorithm{
+public class KruskalAlg extends MSTAlgorithm {
     
     // CONSTRUCTOR
     public KruskalAlg(Graph graph){

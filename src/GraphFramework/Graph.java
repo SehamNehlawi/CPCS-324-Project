@@ -13,24 +13,22 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class Graph {
+public abstract class Graph {
     
-    // Attributes
+    // ATRIBUTES
     int verticesNo=0;
     int eddgNo =0;
     boolean isDigraph=false;
     Vertex vertices[];
     
     
-    // Functions
-    void makeGraph(int vNum, int eNum){
-        //this.verticesNo=vNum;
-        //this.eddgNo=eNum;
+    // METHODS
+    public void makeGraph(int vNum, int eNum){
         this.vertices = new Vertex[vNum];
         for (int i = 0; i < vNum; i++) {
            // create vertix and add it to the list
            this.verticesNo++;
-           vertices[i]=creatVertex(String.valueOf('A'+i));
+           vertices[i]=createVertex(String.valueOf('A'+i));
         }
         
          int choose[]=new int[vNum];
@@ -58,7 +56,6 @@ public class Graph {
             // the graph now is connected 
            }
            else{
-            //v1 = (int)(Math.random()*(vNum));
             v1 = (int)(Math.random()*(vNum));
             v2 = (int)(Math.random()*(vNum));
 
@@ -77,8 +74,7 @@ public class Graph {
                       break;
                   }
                 }
-            } while (t);
-                
+            } while (t);     
            }
            
            // add the edge
@@ -89,7 +85,7 @@ public class Graph {
         
     }
     
-    void readGraphFromFile(String fileName) throws FileNotFoundException{
+    public void readGraphFromFile(String fileName) throws FileNotFoundException{
        File g = new File(fileName);
        Scanner input = new Scanner (g);
        if(input.nextLine()=="digraph 1")
@@ -98,10 +94,8 @@ public class Graph {
         
        // read number of vertices
        int v = input.nextInt();
-       //this.verticesNo=v;
        // read number of edges
        int e = input.nextInt();
-      // this.eddgNo=(!isDigraph?2*e:e);
        
        this.vertices = new Vertex[v];
         
@@ -111,8 +105,8 @@ public class Graph {
             int w = input.nextInt();
             
             // add vertices
-            if(vertices[(s1.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s1.charAt(0))-'A']= creatVertex(s1);}
-            if(vertices[(s2.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s2.charAt(0))-'A']= creatVertex(s2);}
+            if(vertices[(s1.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s1.charAt(0))-'A']= createVertex(s1);}
+            if(vertices[(s2.charAt(0))-'A']==null){ this.verticesNo++; vertices[(s2.charAt(0))-'A']= createVertex(s2);}
            
             // add the edge
             this.eddgNo++;
@@ -121,20 +115,12 @@ public class Graph {
         }
     }
    
-    Edge addEdge(Vertex v, Vertex u, int w){
-        Edge e = createEdge(v,u,w);
-        v.adjList.add(e);
-        
-        return e;
+    public Edge addEdge(Vertex v, Vertex u, int w){
+        v.adjList.add(createEdge(v,u,w));
+        return createEdge(v, u, w);
     }
     
-    Edge createEdge(Vertex source, Vertex target, int weight){
-        return new Edge(source,target,weight);
-    }
+    public abstract Edge createEdge(Vertex source, Vertex target, int weight);
     
-    Vertex creatVertex(String label){
-        return new Vertex(label);
-    }
-    
-    
+    public abstract Vertex createVertex(String label);
 }

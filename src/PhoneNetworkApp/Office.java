@@ -8,6 +8,20 @@ CPCS324 Group Project | Phase1 | Section B9B
 
 package PhoneNetworkApp;
 
-public class Office {
+public class Office extends GraphFramework.Vertex {
     
+    // CONSTRUCTOR
+    public Office(String L){
+        super(L);
+    }
+    
+    // METHODS
+    void setLable(String L){
+        super.label= "O"+L;
+    }
+    
+    @Override
+    public void displayInfo() {
+       super.displayInfo();
+    } 
 }
