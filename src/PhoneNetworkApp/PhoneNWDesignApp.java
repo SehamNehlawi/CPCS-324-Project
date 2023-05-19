@@ -25,12 +25,50 @@ public class PhoneNWDesignApp {
         System.out.print("Type 1 to Upload a File or Any Other Number to Generate a Random Graph: ");
         int option = input.nextInt();
         if(option != 1){
-            // Generate graph randomly
-            System.out.print("Please specify the number of vertices: ");
-            int vNum = input.nextInt();
-            System.out.print("Please specify the number of edges: ");
-            int eNum = input.nextInt();
-            bluePrintsGraph.makeGraph(vNum, eNum);
+            
+            int vNum, eNum, choice;
+            
+            do{    
+                // Apply makeGraph() method
+                System.out.println("\n\n--------------------- Choose From 1 to 7 ------------------");
+                System.out.println("*** where n = number of vertices and m = number of edges ***");
+                System.out.println("*** These are the available cases: ***");
+                System.out.println("    1) n=1,000  ***  m=10,000  "
+                + "\n    2) n=1,000  ***  m=15,000  " 
+                + "\n    3) n=1,000  ***  m=25,000  "
+                + "\n    4) n=5,000  ***  m=15,000  "
+                + "\n    5) n=5,000  ***  m=25,000  "
+                + "\n    6) n=10,000 ***  m=15,000  "
+                + "\n    7) n=10,000 ***  m=25,000  "
+                + "\n-------------------------------");
+                System.out.print("\n\nYour choice: ");
+
+                choice = input.nextInt();
+
+                switch(choice){
+                    case 1:
+                        vNum = 1000; eNum = 10000; break;
+                    case 2: 
+                        vNum = 1000; eNum = 15000; break;
+                    case 3: 
+                        vNum = 1000; eNum = 25000; break;
+                    case 4:
+                        vNum = 5000; eNum = 15000; break;
+                    case 5:
+                        vNum = 5000; eNum = 25000; break;
+                    case 6:
+                        vNum = 10000; eNum = 15000; break;
+                    case 7:
+                        vNum = 10000; eNum = 25000; break;
+                    default: 
+                        System.out.print("Error! Please choose from 1 to 7: "); continue;
+                }
+
+                bluePrintsGraph.makeGraph(vNum, eNum);
+
+
+            }while(!(choice>=1 && choice<=7));
+            
         }else{
             // Read graph from file
             System.out.print("Please enter the file name you wish to use, including the '.txt' extension: ");
