@@ -41,7 +41,7 @@ public class PhoneNWDesignApp {
                 + "\n    6) n=10,000 ***  m=15,000  "
                 + "\n    7) n=10,000 ***  m=25,000  "
                 + "\n-------------------------------");
-                System.out.print("\n\nYour choice: ");
+                System.out.print("\nYour choice: ");
 
                 choice = input.nextInt();
 
@@ -85,9 +85,9 @@ public class PhoneNWDesignApp {
         long elapsedTime = endTime - startTime;
         kruskal.displayResultingMST();
         System.out.println("------------------------------------------------\nTotal time elapsed (Kruskal Algorithm) : " + elapsedTime);
-        
+
         System.out.println("\n");
-        
+           
         // Disply MST (Minimum Spanning Tree) By Prim Algorithm and caluclate elapsed time
         long beginTime = System.nanoTime();
         MSTAlgorithm prim = new MHPrimAlg(bluePrintsGraph);
