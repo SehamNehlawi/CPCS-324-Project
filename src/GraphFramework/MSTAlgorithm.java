@@ -24,6 +24,9 @@ public abstract class MSTAlgorithm {
     
     // METHODS
     // Abstract method to display resulting MST
-    public abstract void displayResultingMST();
+    /* We add the boolean parameter to print all paths 
+       only if it called by readGraphFromFile() method
+    */
+    public abstract void displayResultingMST(boolean flag);
     
 }

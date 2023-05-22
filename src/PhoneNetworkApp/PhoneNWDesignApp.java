@@ -16,6 +16,10 @@ import java.util.Scanner;
 
 public class PhoneNWDesignApp {
     public static void main(String[] args) throws FileNotFoundException{
+        
+        // Flag to determine when to print the paths
+        boolean flag = false;
+        
         // Create objects
         Scanner input = new Scanner(System.in);
         BluePrintsGraph bluePrintsGraph = new BluePrintsGraph();
@@ -41,7 +45,7 @@ public class PhoneNWDesignApp {
                 + "\n    6) n=10,000 ***  m=15,000  "
                 + "\n    7) n=10,000 ***  m=25,000  "
                 + "\n-------------------------------");
-                System.out.print("\nYour choice: ");
+                System.out.print("Your choice: ");
 
                 choice = input.nextInt();
 
@@ -71,6 +75,7 @@ public class PhoneNWDesignApp {
             
         }else{
             // Read graph from file
+            flag = true;
             System.out.print("Please enter the file name you wish to use, including the '.txt' extension: ");
             String fileName = input.next();
             bluePrintsGraph.readGraphFromFile(fileName);
@@ -79,21 +84,21 @@ public class PhoneNWDesignApp {
         System.out.println("");
         
         // Disply MST (Minimum Spanning Tree) By Kruskal Algorithm and caluclate elapsed time  
-        long startTime =  System.nanoTime();
         MSTAlgorithm kruskal = new KruskalAlg(bluePrintsGraph);
+        long startTime =  System.nanoTime();
+        kruskal.displayResultingMST(flag);
         long endTime = System.nanoTime();
         long elapsedTime = endTime - startTime;
-        kruskal.displayResultingMST();
         System.out.println("------------------------------------------------\nTotal time elapsed (Kruskal Algorithm) : " + elapsedTime);
 
         System.out.println("\n");
            
         // Disply MST (Minimum Spanning Tree) By Prim Algorithm and caluclate elapsed time
-        long beginTime = System.nanoTime();
         MSTAlgorithm prim = new MHPrimAlg(bluePrintsGraph);
+        long beginTime = System.nanoTime();
+        prim.displayResultingMST(flag);
         long finalTime = System.nanoTime();
         long timeElapsed = finalTime - beginTime;
-        prim.displayResultingMST();
         System.out.println("------------------------------------------------\nTotal time elapsed (Prim Algorithm) : " + timeElapsed);
         System.out.println("\nThank you for being a part of our Phone Network Design App community. :)");
     }
