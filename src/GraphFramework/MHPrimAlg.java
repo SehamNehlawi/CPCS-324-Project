@@ -47,7 +47,7 @@ public class MHPrimAlg extends MSTAlgorithm{
         public void shiftUp(int index){
             int parentIndex = (index - 1) / 2;
             while(index > 0 &&
-                  comparator.compare(minHeap.get(index), minHeap.get(parentIndex)) < 0){
+                comparator.compare(minHeap.get(index), minHeap.get(parentIndex)) < 0){
                 swap(index, parentIndex);
                 index = parentIndex;
                 parentIndex = (index - 1) / 2;

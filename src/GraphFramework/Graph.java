@@ -71,7 +71,7 @@ public abstract class Graph {
                     continue;
                 }
                 for (int j = 0; j<vertices[v1].adjList.size();j++ ){
-                  if(vertices[v1].adjList.get(j).target.label!=(vertices[v2].label)){
+                  if(!vertices[v1].adjList.get(j).target.label.equals(vertices[v2].label)){
                       t=false;
                       break;
                   }
@@ -90,7 +90,7 @@ public abstract class Graph {
     public void readGraphFromFile(String fileName) throws FileNotFoundException{
        File g = new File(fileName);
        Scanner input = new Scanner (g);
-       if(input.nextLine()=="digraph 1")
+       if("digraph 1".equals(input.nextLine()))
             this.isDigraph=true;
 
         
